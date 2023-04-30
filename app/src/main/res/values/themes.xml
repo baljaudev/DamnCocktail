@@ -2,7 +2,8 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.DamnCocktail" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorSecondary">@color/light_white</item>
+        <item name="colorPrimary">@color/light_red</item>
     </style>
 
     <style name="Theme.DamnCocktail" parent="Base.Theme.DamnCocktail" />

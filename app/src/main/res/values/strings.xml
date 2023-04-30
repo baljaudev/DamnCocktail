@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">Damn Cocktail</string>
+    <string name="btn_acceder">Acceder</string>
+    <string name="hintetEmail">Email</string>
+    <string name="hintetPassword">Contraseña</string>
+    <string name="btn_registrar">Registrar</string>
+    <string name="btn_borrar_cuenta">Borrar Cuenta</string>
+    <string name="borrar_ok">Cuenta borrada correctamente</string>
+    <string name="borrar_no_ok">Error al eliminar la cuenta</string>
+    <string name="no_datos">Falta email o contraseña</string>
+    <string name="registro_ok">El usuario ha sido registrado</string>
+    <string name="registro_no_ok">Error al registrar usuario</string>
+    <string name="email_no_valido">Formato de email introducido no válido</string>
+    <string name="pwd_no_valido">La contraseña no cumple con los requisitos</string>
+    <string name="pwd_no_ok">Contraseña incorrecta</string>
+    <string name="et_nueva_pwd">Nueva contraseña</string>
+    <string name="btn_cambiar_pwd">Cambiar contraseña</string>
+    <string name="cambiar_pwd_ok">Contraseña actualizada</string>
+    <string name="cambiar_pwd_no_ok">Error al cambiar la contraseña</string>
+    <string name="cuenta_google">Acción deshabilitada con cuenta Google</string>
+    <string name="no_registrado">Usuario no registrado o contraseña incorrecta</string>
+    <string name="registro">Registro</string>
+    <string name="registro_mensaje">Usuario no registrado, ¿Desea registrar a este usuario?</string>
+    <string name="usuario_ya_registrado">Usuario ya registrado</string>
+    <string name="si">Sí</string>
+    <string name="no">No</string>
+    <string name="tv_valid_pwd">La contraseña debe contener al menos una mayúscula, una minúscula, un número y uno de los siguientes caracteres especiales: ?¿!#%$</string>
 </resources>
