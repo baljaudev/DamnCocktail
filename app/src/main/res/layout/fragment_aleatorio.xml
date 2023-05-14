@@ -1,14 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.AleatorioFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <!-- Nombre del cóctel -->
+    <TextView
+        android:id="@+id/nombreCocktail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/tv_nombre_cocktail_size"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:padding="@dimen/margen_app"
+        android:text="Nombre del cóctel"/>
+
+    <!-- Foto del cóctel -->
+    <ImageView
+        android:id="@+id/fotoCocktail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cocktailmain"
+        android:layout_below="@id/nombreCocktail"
+        android:layout_marginTop="@dimen/margen_app"/>
+
+    <!-- Ingredientes del cóctel TV -->
+    <TextView
+        android:id="@+id/ingredientesCocktail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margen_app"
+        android:text="@string/tv_ingredientes_cocktail"
+        android:layout_below="@id/fotoCocktail"
+        android:layout_marginTop="@dimen/margen_app"/>
+
+    <!-- Lista ingredientes -->
+    <LinearLayout
+        android:id="@+id/parejasIngredientesCocktail1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/ingredientesCocktail"
+        android:layout_marginTop="@dimen/margen_app">
+
+        <TextView
+            android:id="@+id/ingredienteCocktail1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ingrediente del cóctel"/>
+
+        <TextView
+            android:id="@+id/ingredienteCocktail2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ingrediente del cóctel"/>
+
+        <TextView
+            android:id="@+id/ingredienteCocktail3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ingrediente del cóctel"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/parejasIngredientesCocktail2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/parejasIngredientesCocktail1"
+        android:layout_marginTop="@dimen/margen_app">
+
+        <TextView
+            android:id="@+id/ingredienteCocktail4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ingrediente del cóctel"/>
+
+        <TextView
+            android:id="@+id/ingredienteCocktail5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ingrediente del cóctel"/>
+
+        <TextView
+            android:id="@+id/ingredienteCocktail6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ingrediente del cóctel"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/parejasIngredientesCocktail3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/parejasIngredientesCocktail2"
+        android:layout_marginTop="@dimen/margen_app">
+
+        <TextView
+            android:id="@+id/ingredienteCocktail7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ingrediente del cóctel"/>
+
+        <TextView
+            android:id="@+id/ingredienteCocktail8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ingrediente del cóctel"/>
+
+        <TextView
+            android:id="@+id/ingredienteCocktail9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ingrediente del cóctel"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
