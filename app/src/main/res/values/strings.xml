@@ -29,4 +29,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="frase_inicio">Shake it \'til you make it! The only app that guarantees a happy ending to your night.</string>
+    <string name="tvFiltro">Choose your filter:</string>
+    <string name="btnFiltrar">Filter</string>
 </resources>
