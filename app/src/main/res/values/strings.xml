@@ -32,4 +32,6 @@
     <string name="tvFiltro">Choose your filter:</string>
     <string name="btnFiltrar">Filter</string>
     <string name="tv_ingredientes_cocktail">Ingredients:</string>
+    <string name="no_internet">There is not Internet connection</string>
+    <string name="api_error">API Response error</string>
 </resources>
