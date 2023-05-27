@@ -1,5 +1,6 @@
 package com.damncocktail.fragments;
 
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -31,7 +32,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 
-public class AleatorioFragment extends Fragment implements View.OnClickListener {
+public class AleatorioFragment extends Fragment{
 
     public static final String CLAVE_KEY = "1";
     TextView nombreCocktail;
@@ -109,6 +110,26 @@ public class AleatorioFragment extends Fragment implements View.OnClickListener 
             } else {
                 parejasIngredientes3.addView(textView);
             }
+            /**
+             * En el caso de los OnClickListener, se requiere utilizar variables locales finales (variables final)
+             * para acceder a variables locales dentro del método anónimo.
+             * Dentro del bucle for, estamos creando múltiples instancias de OnClickListener, cada una para un TextView diferente.
+             * Sin embargo, cuando se ejecuta el evento onClick(), necesitamos saber a qué TextView específico corresponde ese evento.
+             * La variable index se declara como final para que pueda ser accedida desde el interior del método anónimo onClick().
+             * Esto nos permite tener una referencia al índice del TextView en ese momento particular,
+             * lo cual es útil si queremos realizar alguna acción en función de ese índice específico.
+             * Si no usamos final int index = i;, se produciría un error de compilación porque las variables locales no pueden
+             * ser accedidas dentro de clases anónimas a menos que sean declaradas como final.
+             * En resumen, al usar final int index = i;, estamos asegurando que la variable 'indice'
+             * sea accesible dentro del método anónimo onClick() y podamos utilizarla para realizar acciones específicas
+             * basadas en el índice del TextView al que se le hace clic.
+             */
+            final int indice = i; // Variable final para acceder al índice en el evento onClick
+            textView.setOnClickListener(v -> {
+                String ingredient = textViewsIngredientes.get(indice).getText().toString();
+                Log.d("INGREDIENTE", ingredient);
+                // TODO: Crear un intent para abrir el Fragment de consulta por ingredientes, mandando el ingrediente como parámetro
+            });
         }
     }
 
@@ -125,11 +146,6 @@ public class AleatorioFragment extends Fragment implements View.OnClickListener 
         instruccionesCocktail = rootView.findViewById(R.id.instruccionesCocktail);
 
         return rootView;
-    }
-
-    @Override
-    public void onClick(View v) {
-        // Implementa el código del evento onClick según tus necesidades
     }
 
     private boolean isNetworkAvailable() {
