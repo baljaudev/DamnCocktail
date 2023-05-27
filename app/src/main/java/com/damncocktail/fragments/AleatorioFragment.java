@@ -40,6 +40,9 @@ public class AleatorioFragment extends Fragment{
     LinearLayout parejasIngredientes1;
     LinearLayout parejasIngredientes2;
     LinearLayout parejasIngredientes3;
+    LinearLayout medidasIngredientesCocktail1;
+    LinearLayout medidasIngredientesCocktail2;
+    LinearLayout medidasIngredientesCocktail3;
     TextView instruccionesCocktail;
 
     public AleatorioFragment() {}
@@ -86,6 +89,39 @@ public class AleatorioFragment extends Fragment{
         Glide.with(getActivity()).load(cocktail.getStrDrinkThumb()).into(fotoCocktail);
         instruccionesCocktail.setText(cocktail.getStrInstructions());
 
+        cargarIngredientes(cocktail);
+        cargarMedidas(cocktail);
+    }
+
+    private void cargarMedidas(Cocktail cocktail) {
+        List<TextView> textViewsMedidas = new ArrayList<>();
+
+        for (int i = 1; i <= cocktail.getNumIngredientes(); i++) {
+            String medida = cocktail.getMedida(i);
+            if (medida != null && !medida.isEmpty()) {
+                TextView textView = new TextView(getActivity());
+                textView.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                ));
+                textView.setText(medida);
+                textViewsMedidas.add(textView);
+            }
+        }
+
+        for (int i = 0; i < textViewsMedidas.size(); i++) {
+            TextView textView = textViewsMedidas.get(i);
+            if (i < 5) {
+                medidasIngredientesCocktail1.addView(textView);
+            } else if (i < 10) {
+                medidasIngredientesCocktail2.addView(textView);
+            } else {
+                medidasIngredientesCocktail3.addView(textView);
+            }
+        }
+    }
+
+    private void cargarIngredientes(Cocktail cocktail) {
         List<TextView> textViewsIngredientes = new ArrayList<>();
 
         for (int i = 1; i <= cocktail.getNumIngredientes(); i++) {
@@ -143,6 +179,9 @@ public class AleatorioFragment extends Fragment{
         parejasIngredientes1 = rootView.findViewById(R.id.parejasIngredientesCocktail1);
         parejasIngredientes2 = rootView.findViewById(R.id.parejasIngredientesCocktail2);
         parejasIngredientes3 = rootView.findViewById(R.id.parejasIngredientesCocktail3);
+        medidasIngredientesCocktail1 = rootView.findViewById(R.id.medidasIngredientesCocktail1);
+        medidasIngredientesCocktail2 = rootView.findViewById(R.id.medidasIngredientesCocktail2);
+        medidasIngredientesCocktail3 = rootView.findViewById(R.id.medidasIngredientesCocktail3);
         instruccionesCocktail = rootView.findViewById(R.id.instruccionesCocktail);
 
         return rootView;

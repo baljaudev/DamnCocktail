@@ -654,4 +654,41 @@ public class Cocktail {
         }
         return i;
     }
+
+    public String getMedida(int i) {
+        switch (i) {
+            case 1:
+                return strMeasure1;
+            case 2:
+                return strMeasure2;
+            case 3:
+                return strMeasure3;
+            case 4:
+                return (String) strMeasure4;
+            case 5:
+                return (String) strMeasure5;
+            case 6:
+                return (String) strMeasure6;
+            case 7:
+                return (String) strMeasure7;
+            case 8:
+                return (String) strMeasure8;
+            case 9:
+                return (String) strMeasure9;
+            case 10:
+                return (String) strMeasure10;
+            case 11:
+                return (String) strMeasure11;
+            case 12:
+                return (String) strMeasure12;
+            case 13:
+                return (String) strMeasure13;
+            case 14:
+                return (String) strMeasure14;
+            case 15:
+                return (String) strMeasure15;
+            default:
+                return null;
+        }
+    }
 }
