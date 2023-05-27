@@ -1,6 +1,7 @@
 package com.damncocktail.util;
 
 import com.damncocktail.apidata.Cocktail;
+import com.damncocktail.apidata.DrinkList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -24,19 +25,19 @@ public interface APIRestServicesCocktail {
 
 
     @GET("v1/{key}/search.php")
-    Call<Cocktail> obtenerCocktailPrimeraLetra(
+    Call<DrinkList> obtenerCocktailPrimeraLetra(
             @Path("key") String key,
             @Query("f") String letra);
 
 
     @GET("v1/{key}/filter.php")
-    Call<Cocktail> obtenerCocktailAlcohol(
+    Call<DrinkList> obtenerCocktailAlcohol(
             @Path("key") String key,
             @Query("a") String alcohol);
 
 
     @GET("v1/{key}/random.php")
-    Call<Cocktail> obtenerCocktailRandom(
+    Call<DrinkList> obtenerCocktailRandom(
             @Path("key") String key);
 
 }

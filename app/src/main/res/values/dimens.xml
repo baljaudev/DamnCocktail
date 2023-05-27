@@ -7,4 +7,5 @@
     <dimen name="tv_usuario_size">40sp</dimen>
     <dimen name="titulo">20dp</dimen>
     <dimen name="tv_nombre_cocktail_size">20sp</dimen>
+    <dimen name="margen_ingrediente">5dp</dimen>
 </resources>

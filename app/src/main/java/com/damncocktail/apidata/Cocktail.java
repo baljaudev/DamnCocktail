@@ -568,4 +568,90 @@ public class Cocktail {
         this.dateModified = dateModified;
     }
 
+    public String getIngredient(int i) {
+        switch (i) {
+            case 1:
+                return strIngredient1;
+            case 2:
+                return strIngredient2;
+            case 3:
+                return strIngredient3;
+            case 4:
+                return strIngredient4;
+            case 5:
+                return (String) strIngredient5;
+            case 6:
+                return (String) strIngredient6;
+            case 7:
+                return (String) strIngredient7;
+            case 8:
+                return (String) strIngredient8;
+            case 9:
+                return (String) strIngredient9;
+            case 10:
+                return (String) strIngredient10;
+            case 11:
+                return (String) strIngredient11;
+            case 12:
+                return (String) strIngredient12;
+            case 13:
+                return (String) strIngredient13;
+            case 14:
+                return (String) strIngredient14;
+            case 15:
+                return (String) strIngredient15;
+            default:
+                return null;
+        }
+    }
+
+    public int getNumIngredientes() {
+        int i = 0;
+        if (strIngredient1 != null) {
+            i++;
+        }
+        if (strIngredient2 != null) {
+            i++;
+        }
+        if (strIngredient3 != null) {
+            i++;
+        }
+        if (strIngredient4 != null) {
+            i++;
+        }
+        if (strIngredient5 != null) {
+            i++;
+        }
+        if (strIngredient6 != null) {
+            i++;
+        }
+        if (strIngredient7 != null) {
+            i++;
+        }
+        if (strIngredient8 != null) {
+            i++;
+        }
+        if (strIngredient9 != null) {
+            i++;
+        }
+        if (strIngredient10 != null) {
+            i++;
+        }
+        if (strIngredient11 != null) {
+            i++;
+        }
+        if (strIngredient12 != null) {
+            i++;
+        }
+        if (strIngredient13 != null) {
+            i++;
+        }
+        if (strIngredient14 != null) {
+            i++;
+        }
+        if (strIngredient15 != null) {
+            i++;
+        }
+        return i;
+    }
 }
