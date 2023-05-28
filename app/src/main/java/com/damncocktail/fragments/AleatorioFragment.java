@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.damncocktail.R;
 import com.damncocktail.apidata.Cocktail;
+import com.damncocktail.apidata.DrinkList;
 import com.damncocktail.util.APIRestServicesCocktail;
 import com.damncocktail.util.RetrofitClient;
 
@@ -51,21 +52,24 @@ public class AleatorioFragment extends Fragment implements View.OnClickListener 
     private void consultarCocktail() {
         Retrofit r = RetrofitClient.getClient(APIRestServicesCocktail.BASE_URL);
         APIRestServicesCocktail ars = r.create(APIRestServicesCocktail.class);
-        Call<Cocktail> call = ars.obtenerCocktailRandom(CLAVE_KEY);
+        Call<DrinkList> drinkListCall = ars.obtenerCocktailRandom(CLAVE_KEY);
 
-        call.enqueue(new Callback<Cocktail>() {
+        drinkListCall.enqueue(new Callback<DrinkList>() {
             @Override
-            public void onResponse(Call<Cocktail> call, Response<Cocktail> response) {
+            public void onResponse(Call<DrinkList> call, Response<DrinkList> response) {
                 if (response.isSuccessful()) {
-                    Cocktail cocktail = response.body();
-                    cargarDatos(cocktail);
+                    DrinkList drinkList = response.body();
+                    if (drinkList != null && drinkList.getDrinks() != null) {
+                        Cocktail cocktail = drinkList.getDrinks().get(0);
+                        cargarDatos(cocktail);
+                    }
                 } else {
-                    Toast.makeText(getActivity(), R.string.api_error, Toast.LENGTH_LONG).show();
+                    Log.e("ERROR", response.message());
                 }
             }
 
             @Override
-            public void onFailure(Call<Cocktail> call, Throwable t) {
+            public void onFailure(Call<DrinkList> call, Throwable t) {
                 Log.e("ERROR", t.getMessage());
             }
         });
@@ -77,6 +81,11 @@ public class AleatorioFragment extends Fragment implements View.OnClickListener 
                 .load(cocktail.getStrDrinkThumb())
                 .into(fotoCocktail);
         //TODO - Cargar ingredientes
+        // La imagen se saca de la url https://www.thecocktaildb.com/images/ingredients/XXXXXX-Medium.png
+        // donde XXXXXX es el nombre del ingrediente.
+        cocktail.getNumIngredientes();
+
+
         instruccionesCocktail.setText(cocktail.getStrInstructions());
     }
 
