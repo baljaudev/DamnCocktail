@@ -31,10 +31,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 
-public class AleatorioFragment extends Fragment implements View.OnClickListener {
+public class AleatorioFragment extends Fragment {
 
     public static final String CLAVE_KEY = "1";
-    // Glide Glide;
     TextView nombreCocktail;
     ImageView fotoCocktail;
     LinearLayout parejasIngredientes1;
@@ -89,7 +88,6 @@ public class AleatorioFragment extends Fragment implements View.OnClickListener 
         Glide.with(this)
                 .load(cocktail.getStrDrinkThumb())
                 .into(fotoCocktail);
-        //TODO - Cargar ingredientes
         // La imagen se saca de la url https://www.thecocktaildb.com/images/ingredients/XXXXXX-Medium.png
         // donde XXXXXX es el nombre del ingrediente.
         cocktail.getNumIngredientes();
@@ -153,12 +151,9 @@ public class AleatorioFragment extends Fragment implements View.OnClickListener 
             }
 
             final int index = i;
-            textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String ingredient = textViewsIngredientes.get(index).getText().toString();
-                    Toast.makeText(getActivity(), "Clic en el ingrediente: " + ingredient, Toast.LENGTH_SHORT).show();
-                }
+            textView.setOnClickListener(v -> {
+                String ingredient = textViewsIngredientes.get(index).getText().toString();
+                Toast.makeText(getActivity(), "Clic en el ingrediente: " + ingredient, Toast.LENGTH_SHORT).show();
             });
         }
     }
@@ -178,11 +173,6 @@ public class AleatorioFragment extends Fragment implements View.OnClickListener 
         medidasIngredientesCocktail3 = rootView.findViewById(R.id.medidasIngredientesCocktail3);
         instruccionesCocktail = rootView.findViewById(R.id.instruccionesCocktail);
         return rootView;
-    }
-
-    @Override
-    public void onClick(View v) {
-        //TODO - Implementar onClick para los elementos de la vista
     }
 
     private boolean isNetworkAvailable() {
