@@ -35,4 +35,6 @@
     <string name="no_internet">There is not Internet connection</string>
     <string name="api_error">API Response error</string>
     <string name="tv_medidas_ingredientes_cocktail">Measures:</string>
+    <string name="et_nombre_cocktail">Enter the name of the cocktail</string>
+    <string name="btn_busca_cocktail">SEARCH</string>
 </resources>

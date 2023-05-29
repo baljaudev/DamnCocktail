@@ -25,13 +25,15 @@ import com.damncocktail.util.RetrofitClient;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.time.Instant;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
 
-public class AleatorioFragment extends Fragment {
+public class AleatorioFragment extends Fragment implements View.OnClickListener {
 
     public static final String CLAVE_KEY = "1";
     TextView nombreCocktail;
@@ -85,9 +87,12 @@ public class AleatorioFragment extends Fragment {
 
     private void cargarDatos(Cocktail cocktail) {
         nombreCocktail.setText(cocktail.getStrDrink());
+
+
         Glide.with(this)
                 .load(cocktail.getStrDrinkThumb())
                 .into(fotoCocktail);
+        //TODO - Cargar ingredientes
         // La imagen se saca de la url https://www.thecocktaildb.com/images/ingredients/XXXXXX-Medium.png
         // donde XXXXXX es el nombre del ingrediente.
         cocktail.getNumIngredientes();
@@ -151,9 +156,12 @@ public class AleatorioFragment extends Fragment {
             }
 
             final int index = i;
-            textView.setOnClickListener(v -> {
-                String ingredient = textViewsIngredientes.get(index).getText().toString();
-                Toast.makeText(getActivity(), "Clic en el ingrediente: " + ingredient, Toast.LENGTH_SHORT).show();
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String ingredient = textViewsIngredientes.get(index).getText().toString();
+                    Toast.makeText(getActivity(), "Clic en el ingrediente: " + ingredient, Toast.LENGTH_SHORT).show();
+                }
             });
         }
     }
@@ -173,6 +181,11 @@ public class AleatorioFragment extends Fragment {
         medidasIngredientesCocktail3 = rootView.findViewById(R.id.medidasIngredientesCocktail3);
         instruccionesCocktail = rootView.findViewById(R.id.instruccionesCocktail);
         return rootView;
+    }
+
+    @Override
+    public void onClick(View v) {
+        //TODO - Implementar onClick para los elementos de la vista
     }
 
     private boolean isNetworkAvailable() {
