@@ -2,6 +2,7 @@ package com.damncocktail.fragments;
 
 
 
+import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -50,28 +51,14 @@ public class NombreFragment extends Fragment implements View.OnClickListener {
 
     Button btnBuscarCocktail;
 
-
-
     public NombreFragment() {
-
     }
-
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        datosAPI();
     }
 
-    private void datosAPI() {
-        if (isNetworkAvailable()) {
-            String nombre = etBuscarCocktail.getText().toString();
-            consultarCocktail(nombre);
-        } else {
-            Toast.makeText(getActivity(), R.string.no_internet, Toast.LENGTH_LONG).show();
-        }
-    }
 
     private void consultarCocktail(String nombre) {
         Retrofit r = RetrofitClient.getClient(APIRestServicesCocktail.BASE_URL);
@@ -101,13 +88,10 @@ public class NombreFragment extends Fragment implements View.OnClickListener {
     private void cargarDatos(Cocktail cocktail) {
         nombreCocktail.setText(cocktail.getStrDrink());
 
-
         Glide.with(this)
                 .load(cocktail.getStrDrinkThumb())
                 .into(fotoCocktail);
-        //TODO - Cargar ingredientes
-        // La imagen se saca de la url https://www.thecocktaildb.com/images/ingredients/XXXXXX-Medium.png
-        // donde XXXXXX es el nombre del ingrediente.
+
         cocktail.getNumIngredientes();
 
         cargarIngredientes(cocktail);
@@ -181,8 +165,7 @@ public class NombreFragment extends Fragment implements View.OnClickListener {
     }
 
     private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getActivity().getSystemService(getActivity().CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
@@ -211,7 +194,17 @@ public class NombreFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btn_busca_cocktail) {
-            datosAPI();
+            String nombre = etBuscarCocktail.getText().toString();
+            datosAPI(nombre);
         }
     }
+
+    private void datosAPI(String nombre) {
+        if (isNetworkAvailable()) {
+            consultarCocktail(nombre);
+        } else {
+            Toast.makeText(getActivity(), "No hay conexión a internet", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }
