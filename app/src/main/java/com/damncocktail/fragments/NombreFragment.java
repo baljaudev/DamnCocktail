@@ -61,7 +61,16 @@ public class NombreFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        datosAPI();
+    }
 
+    private void datosAPI() {
+        if (isNetworkAvailable()) {
+            String nombre = etBuscarCocktail.getText().toString();
+            consultarCocktail(nombre);
+        } else {
+            Toast.makeText(getActivity(), R.string.no_internet, Toast.LENGTH_LONG).show();
+        }
     }
 
     private void consultarCocktail(String nombre) {
@@ -202,12 +211,7 @@ public class NombreFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btn_busca_cocktail) {
-            if (isNetworkAvailable()) {
-                String nombre = etBuscarCocktail.getText().toString();
-                consultarCocktail(nombre);
-            } else {
-                Toast.makeText(getActivity(), R.string.no_internet, Toast.LENGTH_LONG).show();
-            }
-    }
+            datosAPI();
+        }
     }
 }
