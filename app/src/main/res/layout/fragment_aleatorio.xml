@@ -33,7 +33,8 @@
             app:layout_constraintTop_toBottomOf="@id/nombreCocktail"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5" />
+            app:layout_constraintHorizontal_bias="0.5"
+            android:contentDescription="@string/content_descr_cocktail"/>
 
         <!-- Ingredientes del cóctel TV -->
         <TextView
