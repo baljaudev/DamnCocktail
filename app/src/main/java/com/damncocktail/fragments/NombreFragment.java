@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.damncocktail.R;
 import com.damncocktail.apidata.Cocktail;
+import com.damncocktail.apidata.DrinkList;
 import com.damncocktail.util.APIRestServicesCocktail;
 import com.damncocktail.util.RetrofitClient;
 
@@ -59,18 +60,18 @@ public class NombreFragment extends Fragment implements View.OnClickListener {
         super.onCreate(savedInstanceState);
     }
 
-
     private void consultarCocktail(String nombre) {
         Retrofit r = RetrofitClient.getClient(APIRestServicesCocktail.BASE_URL);
         APIRestServicesCocktail ars = r.create(APIRestServicesCocktail.class);
-        Call<Cocktail> cocktailCall = ars.obtenerCocktailNombre(CLAVE_KEY, nombre);
+        Call<DrinkList> drinkListCall = ars.obtenerCocktailNombre(CLAVE_KEY, nombre);
 
-        cocktailCall.enqueue(new Callback<Cocktail>() {
+        drinkListCall.enqueue(new Callback<DrinkList>() {
             @Override
-            public void onResponse(Call<Cocktail> call, Response<Cocktail> response) {
+            public void onResponse(Call<DrinkList> call, Response<DrinkList> response) {
                 if (response.isSuccessful()) {
-                    Cocktail cocktail = response.body();
-                    if (cocktail != null) {
+                    DrinkList drinkList = response.body();
+                    if (drinkList != null && drinkList.getDrinks() != null) {
+                        Cocktail cocktail = drinkList.getDrinks().get(0);
                         cargarDatos(cocktail);
                     }
                 } else {
@@ -79,11 +80,13 @@ public class NombreFragment extends Fragment implements View.OnClickListener {
             }
 
             @Override
-            public void onFailure(Call<Cocktail> call, Throwable t) {
+            public void onFailure(Call<DrinkList> call, Throwable t) {
                 Log.e("ERROR", t.getMessage());
             }
         });
     }
+
+
 
     private void cargarDatos(Cocktail cocktail) {
         nombreCocktail.setText(cocktail.getStrDrink());

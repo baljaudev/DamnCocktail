@@ -13,13 +13,13 @@ public interface APIRestServicesCocktail {
     public static final String BASE_URL = "https://www.thecocktaildb.com/api/json/";
 
     @GET("v1/{key}/search.php")
-    Call<Cocktail> obtenerCocktailNombre(
+    Call<DrinkList> obtenerCocktailNombre(
             @Path("key") String key,
             @Query("s") String nombre);
 
 
     @GET("v1/{key}/search.php")
-    Call<Cocktail> obtenerCocktailIngrediente(
+    Call<DrinkList> obtenerCocktailIngrediente(
             @Path("key") String key,
             @Query("i") String ingrediente);
 
