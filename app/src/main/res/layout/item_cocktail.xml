@@ -24,4 +24,10 @@
         android:contentDescription="@string/content_descr_cocktail"
         android:layout_gravity="center"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginTop="@dimen/margen_app"
+        android:background="@android:color/black" />
+
 </LinearLayout>

@@ -65,7 +65,6 @@ public class SiNoAlcoholFragment extends Fragment implements View.OnClickListene
             @Override
             public void onResponse(Call<DrinkList> call, Response<DrinkList> response) {
                 if (response.isSuccessful()) {
-                    filtro = radioGroupFiltro.getCheckedRadioButtonId() == R.id.radioButtonAlcoholicas ? ALCOHOL : NO_ALCOHOL;
                      DrinkList cocktails = response.body();
                      Log.d("URL", response.body().toString());
                     cargarRV(cocktails.getDrinks());
@@ -114,6 +113,7 @@ public class SiNoAlcoholFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
+        filtro = radioGroupFiltro.getCheckedRadioButtonId() == R.id.radioButtonAlcoholicas ? ALCOHOL : NO_ALCOHOL;
         if (isNetworkAvailable()) {
             consultarCocktail();
         } else {
