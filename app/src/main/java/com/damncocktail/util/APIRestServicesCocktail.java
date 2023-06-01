@@ -18,7 +18,7 @@ public interface APIRestServicesCocktail {
             @Query("s") String nombre);
 
 
-    @GET("v1/{key}/search.php")
+    @GET("v1/{key}/filter.php")
     Call<DrinkList> obtenerCocktailIngrediente(
             @Path("key") String key,
             @Query("i") String ingrediente);

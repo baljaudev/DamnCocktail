@@ -7,13 +7,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.damncocktail.R;
 import com.damncocktail.apidata.Cocktail;
-import com.damncocktail.fragments.SiNoAlcoholFragment;
 
 import java.util.ArrayList;
 

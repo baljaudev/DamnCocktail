@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.IngredienteFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.IngredienteFragment"
+    android:padding="@dimen/margen_app">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- EditText para buscar el Nombre del cóctel -->
+    <EditText
+        android:id="@+id/etBuscaIngrediente"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:hint="@string/et_ingrediente_cocktail"
+        android:layout_marginTop="@dimen/margen_app"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-</FrameLayout>
+    <!-- Botón de filtro -->
+
+    <!-- RecyclerView para mostrar las bebidas -->
+    <Button
+        android:id="@+id/btnBuscarIngrediente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/btn_busca_cocktail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etBuscaIngrediente" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCocktails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btnBuscarIngrediente"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/margen_app"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,32 +26,16 @@ public class FiltroFragment extends Fragment implements View.OnClickListener, Sp
     FragmentManager fm;
     FragmentTransaction ft;
 
-    public FiltroFragment() {
-        // Required empty public constructor
-    }
-
-    public static FiltroFragment newInstance(String param1, String param2) {
-        FiltroFragment fragment = new FiltroFragment();
-        Bundle args = new Bundle();
-        //args.putString(ARG_PARAM1, param1);
-        //args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    public FiltroFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            //mParam1 = getArguments().getString(ARG_PARAM1);
-            //mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_filtro, container, false);
 
         tvFiltro2 = vista.findViewById(R.id.tvFiltro2);
@@ -111,10 +95,9 @@ public class FiltroFragment extends Fragment implements View.OnClickListener, Sp
         fm = getActivity().getSupportFragmentManager();
         ft = fm.beginTransaction();
         ft.replace(R.id.flContenedor, fragment);
+        ft.addToBackStack(null);
         ft.commit();
     }
-
-
 
     private void cargarTextoSpinnerSeleccionado() {
         spnFiltro.setOnItemSelectedListener(this);
@@ -129,6 +112,4 @@ public class FiltroFragment extends Fragment implements View.OnClickListener, Sp
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
-
 }

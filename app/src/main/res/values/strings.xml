@@ -40,5 +40,6 @@
     <string name="radio_alcoholicas">Alcoholic Drinks</string>
     <string name="radio_no_alcoholicas">No Alcoholic Drinks</string>
     <string name="content_descr_cocktail">COCKTAIL</string>
-    <string name="btn_buscar">Buscar</string>
+    <string name="et_ingrediente_cocktail">Enter an ingredient</string>
+    <string name="no_cocktail">There is no cocktails with that ingredient. Try again!</string>
 </resources>
