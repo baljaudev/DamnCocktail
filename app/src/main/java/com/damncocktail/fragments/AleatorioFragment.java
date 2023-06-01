@@ -33,7 +33,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 
-public class AleatorioFragment extends Fragment implements View.OnClickListener {
+public class AleatorioFragment extends Fragment {
 
     public static final String CLAVE_KEY = "1";
     TextView nombreCocktail;
@@ -69,6 +69,7 @@ public class AleatorioFragment extends Fragment implements View.OnClickListener 
             public void onResponse(Call<DrinkList> call, Response<DrinkList> response) {
                 if (response.isSuccessful()) {
                     DrinkList drinkList = response.body();
+                    Log.d("URL", response.raw().request().url().toString());
                     if (drinkList != null && drinkList.getDrinks() != null) {
                         Cocktail cocktail = drinkList.getDrinks().get(0);
                         cargarDatos(cocktail);
@@ -156,12 +157,9 @@ public class AleatorioFragment extends Fragment implements View.OnClickListener 
             }
 
             final int index = i;
-            textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String ingredient = textViewsIngredientes.get(index).getText().toString();
-                    Toast.makeText(getActivity(), "Clic en el ingrediente: " + ingredient, Toast.LENGTH_SHORT).show();
-                }
+            textView.setOnClickListener(v -> {
+                String ingredient = textViewsIngredientes.get(index).getText().toString();
+                Toast.makeText(getActivity(), "Clic en el ingrediente: " + ingredient, Toast.LENGTH_SHORT).show();
             });
         }
     }
@@ -181,11 +179,6 @@ public class AleatorioFragment extends Fragment implements View.OnClickListener 
         medidasIngredientesCocktail3 = rootView.findViewById(R.id.medidasIngredientesCocktail3);
         instruccionesCocktail = rootView.findViewById(R.id.instruccionesCocktail);
         return rootView;
-    }
-
-    @Override
-    public void onClick(View v) {
-        //TODO - Implementar onClick para los elementos de la vista
     }
 
     private boolean isNetworkAvailable() {

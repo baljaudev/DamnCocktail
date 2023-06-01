@@ -126,7 +126,7 @@ public class SiNoAlcoholFragment extends Fragment implements View.OnClickListene
     @Override
     public void onCocktailClick(Cocktail cocktail) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable("cocktail", cocktail);
+        bundle.putSerializable("nombreCocktail", cocktail.getStrDrink());
         Fragment fragment = new CocktailFragment();
         fragment.setArguments(bundle);
         getActivity().getSupportFragmentManager().beginTransaction()
