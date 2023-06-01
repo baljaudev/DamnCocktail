@@ -13,12 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.damncocktail.R;
 import com.damncocktail.apidata.Cocktail;
+import com.damncocktail.fragments.SiNoAlcoholFragment;
 
 import java.util.ArrayList;
 
 public class CocktailAdapter extends RecyclerView.Adapter<CocktailAdapter.CocktailViewHolder> {
 
     private ArrayList<Cocktail> cocktailList;
+    private OnCocktailClickListener cocktailClickListener;
 
     public CocktailAdapter(ArrayList<Cocktail> cocktailList) {
         this.cocktailList = cocktailList;
@@ -52,6 +54,16 @@ public class CocktailAdapter extends RecyclerView.Adapter<CocktailAdapter.Cockta
             super(itemView);
             tvNombre = itemView.findViewById(R.id.nombreCocktail);
             ivImagen = itemView.findViewById(R.id.fotoCocktail);
+            ivImagen.setOnClickListener(v -> {
+                if (cocktailClickListener != null) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        Cocktail cocktail = cocktailList.get(position);
+                        cocktailClickListener.onCocktailClick(cocktail);
+                    }
+                }
+            });
+
         }
 
         public void bindCocktail(Cocktail cocktail) {
@@ -60,6 +72,9 @@ public class CocktailAdapter extends RecyclerView.Adapter<CocktailAdapter.Cockta
                     .load(cocktail.getStrDrinkThumb())
                     .into(ivImagen);
         }
+    }
+    public void setOnCocktailClickListener(OnCocktailClickListener listener) {
+        this.cocktailClickListener = listener;
     }
 
 }

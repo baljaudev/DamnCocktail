@@ -23,6 +23,7 @@ import com.damncocktail.R;
 import com.damncocktail.apidata.Cocktail;
 import com.damncocktail.apidata.DrinkList;
 import com.damncocktail.recyclerutil.CocktailAdapter;
+import com.damncocktail.recyclerutil.OnCocktailClickListener;
 import com.damncocktail.util.APIRestServicesCocktail;
 import com.damncocktail.util.RetrofitClient;
 
@@ -34,7 +35,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class SiNoAlcoholFragment extends Fragment implements View.OnClickListener {
+public class SiNoAlcoholFragment extends Fragment implements View.OnClickListener, OnCocktailClickListener {
 
     public static final String CLAVE_KEY = "1";
     public static final String ALCOHOL = "Alcoholic";
@@ -66,7 +67,7 @@ public class SiNoAlcoholFragment extends Fragment implements View.OnClickListene
             public void onResponse(Call<DrinkList> call, Response<DrinkList> response) {
                 if (response.isSuccessful()) {
                      DrinkList cocktails = response.body();
-                     Log.d("URL", response.body().toString());
+                     Log.d("URL", response.raw().request().url().toString());
                     cargarRV(cocktails.getDrinks());
                 } else {
                     Log.e("ERROR", response.message());
@@ -83,6 +84,7 @@ public class SiNoAlcoholFragment extends Fragment implements View.OnClickListene
     private void cargarRV(List<Cocktail> cocktail) {
         linearLayoutManager = new LinearLayoutManager(getActivity());
         cocktailAdapter = new CocktailAdapter((ArrayList<Cocktail>) cocktail);
+        cocktailAdapter.setOnCocktailClickListener(this);
         rvCocktails.setHasFixedSize(true);
         rvCocktails.setLayoutManager(linearLayoutManager);
         rvCocktails.setAdapter(cocktailAdapter);
@@ -119,5 +121,18 @@ public class SiNoAlcoholFragment extends Fragment implements View.OnClickListene
         } else {
             Toast.makeText(getActivity(), R.string.no_internet, Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public void onCocktailClick(Cocktail cocktail) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("cocktail", cocktail);
+        Fragment fragment = new CocktailFragment();
+        fragment.setArguments(bundle);
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.flContenedor, fragment)
+                .addToBackStack(null)
+                .commit();
+        Log.d("Cocktail selected", cocktail.getStrDrink());
     }
 }
