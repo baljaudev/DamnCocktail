@@ -48,6 +48,8 @@ public class CocktailAdapter extends RecyclerView.Adapter<CocktailAdapter.Cockta
         private TextView tvNombre;
         private ImageView ivImagen;
 
+
+
         public CocktailViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNombre = itemView.findViewById(R.id.nombreCocktail);
