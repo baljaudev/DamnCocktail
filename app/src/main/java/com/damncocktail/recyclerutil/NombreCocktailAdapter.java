@@ -1,19 +1,23 @@
 package com.damncocktail.recyclerutil;
 
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.damncocktail.R;
 import com.damncocktail.apidata.Cocktail;
+import com.damncocktail.fragments.IngredienteFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +25,11 @@ import java.util.List;
 public class NombreCocktailAdapter  extends RecyclerView.Adapter<NombreCocktailAdapter.NombreCocktailViewHolder> {
 
     private ArrayList<Cocktail> cocktailList;
+    private FragmentActivity mActivity; // Variable para almacenar la actividad o el administrador de fragmentos
 
-
-    public NombreCocktailAdapter(ArrayList<Cocktail> cocktailList) {
+    public NombreCocktailAdapter(ArrayList<Cocktail> cocktailList, FragmentActivity activity) {
         this.cocktailList = cocktailList;
+        this.mActivity = activity; // Almacena la referencia de la actividad o el administrador de fragmentos
     }
 
     @NonNull
@@ -32,7 +37,7 @@ public class NombreCocktailAdapter  extends RecyclerView.Adapter<NombreCocktailA
     public NombreCocktailViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_nombre_cocktail, parent, false);
-        return new NombreCocktailViewHolder(view);
+        return new NombreCocktailViewHolder(view, mActivity); // Pasa la referencia de la actividad o el administrador de fragmentos
     }
 
     @Override
@@ -64,8 +69,9 @@ public class NombreCocktailAdapter  extends RecyclerView.Adapter<NombreCocktailA
 
         private TextView instruccionesCocktail;
 
+        private FragmentActivity mActivity; // Variable para almacenar la referencia de la actividad o el administrador de fragmentos
 
-        public NombreCocktailViewHolder(@NonNull View itemView) {
+        public NombreCocktailViewHolder(@NonNull View itemView, FragmentActivity activity) {
             super(itemView);
             tvNombre = itemView.findViewById(R.id.nombreCocktail);
             ivImagen = itemView.findViewById(R.id.fotoCocktail);
@@ -78,12 +84,8 @@ public class NombreCocktailAdapter  extends RecyclerView.Adapter<NombreCocktailA
             medidasIngredientesCocktail2 = itemView.findViewById(R.id.medidasIngredientesCocktail2);
             medidasIngredientesCocktail3 = itemView.findViewById(R.id.medidasIngredientesCocktail3);
             instruccionesCocktail = itemView.findViewById(R.id.instruccionesCocktail);
-
-
-
+            mActivity = activity; // Almacena la referencia de la actividad o el administrador de fragmentos
         }
-
-
 
         public void bindCocktail(Cocktail cocktail) {
             tvNombre.setText(cocktail.getStrDrink());
@@ -152,15 +154,18 @@ public class NombreCocktailAdapter  extends RecyclerView.Adapter<NombreCocktailA
 
                 final int index = i;
                 textView.setOnClickListener(v -> {
-                    String ingredient = textViewsIngredientes.get(index).getText().toString();
-                    Toast.makeText(itemView.getContext(), "Clic en el ingrediente: " + ingredient, Toast.LENGTH_SHORT).show();
+                    String ingrediente = textViewsIngredientes.get(index).getText().toString();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("ingrediente", ingrediente);
+                    Fragment fragment = new IngredienteFragment();
+                    fragment.setArguments(bundle);
+                    mActivity.getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.flContenedor, fragment)
+                            .addToBackStack(null)
+                            .commit();
+                    Log.d("Cocktail selected", cocktail.getStrDrink());
                 });
             }
         }
-
-
     }
-
-
-
 }

@@ -99,6 +99,11 @@ public class IngredienteFragment extends Fragment implements View.OnClickListene
         etIngrediente = vista.findViewById(R.id.etBuscaIngrediente);
         btnFiltrar = vista.findViewById(R.id.btnBuscarIngrediente);
         btnFiltrar.setOnClickListener(this);
+        if (getArguments() != null) {
+            ingrediente = getArguments().getString("ingrediente");
+            etIngrediente.setText(ingrediente);
+            consultarCocktail();
+        }
         return vista;
     }
 
