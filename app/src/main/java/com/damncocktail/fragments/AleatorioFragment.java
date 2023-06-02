@@ -158,8 +158,16 @@ public class AleatorioFragment extends Fragment {
 
             final int index = i;
             textView.setOnClickListener(v -> {
-                String ingredient = textViewsIngredientes.get(index).getText().toString();
-                Toast.makeText(getActivity(), "Clic en el ingrediente: " + ingredient, Toast.LENGTH_SHORT).show();
+                String ingrediente = textViewsIngredientes.get(index).getText().toString();
+                Bundle bundle = new Bundle();
+                bundle.putString("ingrediente", ingrediente);
+                Fragment fragment = new IngredienteFragment();
+                fragment.setArguments(bundle);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.flContenedor, fragment)
+                        .addToBackStack(null)
+                        .commit();
+                Log.d("Cocktail selected", cocktail.getStrDrink());
             });
         }
     }
