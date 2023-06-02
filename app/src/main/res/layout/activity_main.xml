@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:padding="@dimen/margen_app">
+    android:padding="@dimen/margen_app"
+    android:background="@color/crash_white"
+    >
 
     <FrameLayout
         android:id="@+id/flContenedor"
@@ -24,18 +26,24 @@
         <ImageButton
             android:id="@+id/btnFiltro"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/altura_button"
             android:src="@drawable/cocktail"
             android:layout_weight="1"
-            android:backgroundTint="@color/light_red"/>
+            android:backgroundTint="@color/light_red"
+            android:layout_marginEnd="@dimen/margin_button"
+            android:background="@drawable/borde_redondo_button"
+            />
 
         <ImageButton
             android:id="@+id/btnAleatorio"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/altura_button"
             android:layout_weight="1"
             android:src="@drawable/dices"
-            android:backgroundTint="@color/light_red"/>
+            android:backgroundTint="@color/light_red"
+            android:layout_marginStart="@dimen/margin_button"
+            android:background="@drawable/borde_redondo_button"
+            />
 
     </LinearLayout>
 

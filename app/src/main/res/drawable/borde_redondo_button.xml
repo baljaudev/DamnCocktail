@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- https://es.stackoverflow.com/questions/9068/botones-redondeados-en-android -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <!-- Ponemos los valores para darle forma al borde -->
+    <corners android:radius="100px"/>
+</shape>
