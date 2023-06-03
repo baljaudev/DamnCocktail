@@ -81,7 +81,7 @@ public class PrimeraLetraFragment extends Fragment implements View.OnClickListen
 
     private void cargarRV(List<Cocktail> cocktail) {
         linearLayoutManager = new LinearLayoutManager(getActivity());
-        nombreCocktailAdapter = new NombreCocktailAdapter((ArrayList<Cocktail>) cocktail);
+        nombreCocktailAdapter = new NombreCocktailAdapter((ArrayList<Cocktail>) cocktail, getActivity());
         //nombreCocktailAdapter.setOnCocktailClickListener(this);
         rvCocktails.setHasFixedSize(true);
         rvCocktails.setLayoutManager(linearLayoutManager);
@@ -102,7 +102,7 @@ public class PrimeraLetraFragment extends Fragment implements View.OnClickListen
         View rootView = inflater.inflate(R.layout.fragment_primera_letra, container, false);
 
         rvCocktails = rootView.findViewById(R.id.rvCocktails);
-        nombreCocktailAdapter = new NombreCocktailAdapter(new ArrayList<>());
+        nombreCocktailAdapter = new NombreCocktailAdapter(new ArrayList<>(), getActivity());
         rvCocktails.setAdapter(nombreCocktailAdapter);
         rvCocktails.setLayoutManager(new LinearLayoutManager(getActivity()));
         etBuscarCocktail = rootView.findViewById(R.id.et_busca_cocktail);

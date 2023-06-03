@@ -130,6 +130,6 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:layout_marginTop="@dimen/margen_app"
-        android:background="@android:color/black" />
+        android:background="@color/light_red" />
 
 </LinearLayout>
