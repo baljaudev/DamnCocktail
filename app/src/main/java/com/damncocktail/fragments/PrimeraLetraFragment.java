@@ -21,6 +21,7 @@ import com.damncocktail.R;
 import com.damncocktail.apidata.Cocktail;
 import com.damncocktail.apidata.DrinkList;
 import com.damncocktail.recyclerutil.NombreCocktailAdapter;
+import com.damncocktail.recyclerutil.OnCocktailClickListener;
 import com.damncocktail.util.APIRestServicesCocktail;
 import com.damncocktail.util.RetrofitClient;
 
@@ -33,7 +34,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 
-public class PrimeraLetraFragment extends Fragment implements View.OnClickListener {
+public class PrimeraLetraFragment extends Fragment implements View.OnClickListener, OnCocktailClickListener {
 
     public static final String CLAVE_KEY = "1";
 
@@ -82,10 +83,11 @@ public class PrimeraLetraFragment extends Fragment implements View.OnClickListen
     private void cargarRV(List<Cocktail> cocktail) {
         linearLayoutManager = new LinearLayoutManager(getActivity());
         nombreCocktailAdapter = new NombreCocktailAdapter((ArrayList<Cocktail>) cocktail, getActivity());
-        //nombreCocktailAdapter.setOnCocktailClickListener(this);
+        nombreCocktailAdapter.setOnCocktailClickListener(this);
         rvCocktails.setHasFixedSize(true);
         rvCocktails.setLayoutManager(linearLayoutManager);
         rvCocktails.setAdapter(nombreCocktailAdapter);
+
     }
 
 
@@ -128,4 +130,16 @@ public class PrimeraLetraFragment extends Fragment implements View.OnClickListen
         }
     }
 
+    @Override
+    public void onCocktailClick(Cocktail cocktail) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("nombreCocktail", cocktail.getStrDrink());
+        Fragment fragment = new CocktailFragment();
+        fragment.setArguments(bundle);
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.flContenedor, fragment)
+                .addToBackStack(null)
+                .commit();
+        Log.d("Cocktail selected", cocktail.getStrDrink());
+    }
 }

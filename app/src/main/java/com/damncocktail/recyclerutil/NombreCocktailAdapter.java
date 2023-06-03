@@ -27,6 +27,8 @@ public class NombreCocktailAdapter  extends RecyclerView.Adapter<NombreCocktailA
     private ArrayList<Cocktail> cocktailList;
     private FragmentActivity mActivity; // Variable para almacenar la actividad o el administrador de fragmentos
 
+    private OnCocktailClickListener cocktailClickListener;
+
     public NombreCocktailAdapter(ArrayList<Cocktail> cocktailList, FragmentActivity activity) {
         this.cocktailList = cocktailList;
         this.mActivity = activity; // Almacena la referencia de la actividad o el administrador de fragmentos
@@ -73,18 +75,28 @@ public class NombreCocktailAdapter  extends RecyclerView.Adapter<NombreCocktailA
 
         public NombreCocktailViewHolder(@NonNull View itemView, FragmentActivity activity) {
             super(itemView);
-            tvNombre = itemView.findViewById(R.id.nombreCocktail);
-            ivImagen = itemView.findViewById(R.id.fotoCocktail);
-            ingredientesCocktail = itemView.findViewById(R.id.ingredientesCocktail);
-            medidasIngredientesCocktail = itemView.findViewById(R.id.medidasIngredientesCocktail);
-            parejasIngredientes1 = itemView.findViewById(R.id.parejasIngredientesCocktail1);
-            parejasIngredientes2 = itemView.findViewById(R.id.parejasIngredientesCocktail2);
-            parejasIngredientes3 = itemView.findViewById(R.id.parejasIngredientesCocktail3);
-            medidasIngredientesCocktail1 = itemView.findViewById(R.id.medidasIngredientesCocktail1);
-            medidasIngredientesCocktail2 = itemView.findViewById(R.id.medidasIngredientesCocktail2);
-            medidasIngredientesCocktail3 = itemView.findViewById(R.id.medidasIngredientesCocktail3);
-            instruccionesCocktail = itemView.findViewById(R.id.instruccionesCocktail);
+            tvNombre = itemView.findViewById(R.id.nombreCocktailNombre);
+            ivImagen = itemView.findViewById(R.id.fotoCocktailNombre);
+            ingredientesCocktail = itemView.findViewById(R.id.ingredientesCocktailNombre);
+            medidasIngredientesCocktail = itemView.findViewById(R.id.medidasIngredientesCocktailNombre);
+            parejasIngredientes1 = itemView.findViewById(R.id.parejasIngredientesCocktail1Nombre);
+            parejasIngredientes2 = itemView.findViewById(R.id.parejasIngredientesCocktail2Nombre);
+            parejasIngredientes3 = itemView.findViewById(R.id.parejasIngredientesCocktail3Nombre);
+            medidasIngredientesCocktail1 = itemView.findViewById(R.id.medidasIngredientesCocktail1Nombre);
+            medidasIngredientesCocktail2 = itemView.findViewById(R.id.medidasIngredientesCocktail2Nombre);
+            medidasIngredientesCocktail3 = itemView.findViewById(R.id.medidasIngredientesCocktail3Nombre);
+            instruccionesCocktail = itemView.findViewById(R.id.instruccionesCocktailNombre);
+            ivImagen.setOnClickListener(v -> {
+                if (cocktailClickListener != null) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        Cocktail cocktail = cocktailList.get(position);
+                        cocktailClickListener.onCocktailClick(cocktail);
+                    }
+                }
+            });
             mActivity = activity; // Almacena la referencia de la actividad o el administrador de fragmentos
+
         }
 
         public void bindCocktail(Cocktail cocktail) {
@@ -167,5 +179,11 @@ public class NombreCocktailAdapter  extends RecyclerView.Adapter<NombreCocktailA
                 });
             }
         }
+
     }
+
+    public void setOnCocktailClickListener(OnCocktailClickListener listener) {
+        this.cocktailClickListener = listener;
+    }
+
 }

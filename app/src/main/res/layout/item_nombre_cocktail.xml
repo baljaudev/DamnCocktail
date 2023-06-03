@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <!-- Nombre del cóctel -->
     <TextView
-        android:id="@+id/nombreCocktail"
+        android:id="@+id/nombreCocktailNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/tv_nombre_cocktail_size"
@@ -17,7 +16,7 @@
 
     <!-- Foto del cóctel -->
     <ImageView
-        android:id="@+id/fotoCocktail"
+        android:id="@+id/fotoCocktailNombre"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="@dimen/margen_app"
@@ -26,7 +25,7 @@
 
     <!-- Ingredientes del cóctel TV -->
     <TextView
-        android:id="@+id/ingredientesCocktail"
+        android:id="@+id/ingredientesCocktailNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/tv_ingredientes_cocktail"
@@ -36,95 +35,71 @@
 
     <!-- Lista ingredientes -->
     <LinearLayout
-        android:id="@+id/parejasIngredientesCocktail1"
+        android:id="@+id/parejasIngredientesCocktail1Nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="@dimen/margen_app"
-        app:layout_constraintTop_toBottomOf="@id/ingredientesCocktail"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_marginTop="@dimen/margen_app">
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/parejasIngredientesCocktail2"
+        android:id="@+id/parejasIngredientesCocktail2Nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="@dimen/margen_app"
-        app:layout_constraintTop_toBottomOf="@id/parejasIngredientesCocktail1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_marginTop="@dimen/margen_app">
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/parejasIngredientesCocktail3"
+        android:id="@+id/parejasIngredientesCocktail3Nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="@dimen/margen_app"
-        app:layout_constraintTop_toBottomOf="@id/parejasIngredientesCocktail2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_marginTop="@dimen/margen_app">
     </LinearLayout>
 
     <!-- Medidas de los ingredientes del cóctel TV -->
     <TextView
-        android:id="@+id/medidasIngredientesCocktail"
+        android:id="@+id/medidasIngredientesCocktailNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/tv_medidas_ingredientes_cocktail"
         android:layout_marginTop="@dimen/margen_app"
         android:textStyle="bold"
-        android:gravity="center_horizontal"
-        app:layout_constraintTop_toBottomOf="@id/parejasIngredientesCocktail3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:gravity="center_horizontal"/>
 
     <!-- Lista medidas de los ingredientes -->
     <LinearLayout
-        android:id="@+id/medidasIngredientesCocktail1"
+        android:id="@+id/medidasIngredientesCocktail1Nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="@dimen/margen_app"
-        app:layout_constraintTop_toBottomOf="@id/medidasIngredientesCocktail"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_marginTop="@dimen/margen_app">
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/medidasIngredientesCocktail2"
+        android:id="@+id/medidasIngredientesCocktail2Nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="@dimen/margen_app"
-        app:layout_constraintTop_toBottomOf="@id/medidasIngredientesCocktail1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_marginTop="@dimen/margen_app">
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/medidasIngredientesCocktail3"
+        android:id="@+id/medidasIngredientesCocktail3Nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="@dimen/margen_app"
-        app:layout_constraintTop_toBottomOf="@id/medidasIngredientesCocktail2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_marginTop="@dimen/margen_app">
     </LinearLayout>
 
     <!-- Preparación del cóctel TV -->
     <TextView
-        android:id="@+id/instruccionesCocktail"
+        android:id="@+id/instruccionesCocktailNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margen_app"
-        android:gravity="center_horizontal"
-        app:layout_constraintTop_toBottomOf="@id/medidasIngredientesCocktail3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:gravity="center_horizontal" />
 
     <View
         android:layout_width="match_parent"
