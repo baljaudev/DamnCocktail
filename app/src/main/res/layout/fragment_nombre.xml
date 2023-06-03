@@ -8,12 +8,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:padding="@dimen/margen_app">
 
         <!-- EditText para buscar el Nombre del cóctel -->
         <EditText
-            android:id="@+id/et_busca_cocktail"
+            android:id="@+id/et_nombre_busca_cocktail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/et_nombre_cocktail"
@@ -24,23 +24,25 @@
 
         <!-- Botón para buscar el Nombre del cóctel -->
         <Button
-            android:id="@+id/btn_busca_cocktail"
+            android:id="@+id/btn_nombre_busca_cocktail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_busca_cocktail"
-            app:layout_constraintTop_toBottomOf="@id/et_busca_cocktail"
+            app:layout_constraintTop_toBottomOf="@id/et_nombre_busca_cocktail"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/rvNombreCocktails" />
 
         <!-- RecyclerView para mostrar las bebidas -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCocktails"
+            android:id="@+id/rvNombreCocktails"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="@dimen/margen_app"
-            app:layout_constraintTop_toBottomOf="@id/btn_busca_cocktail"
+            app:layout_constraintTop_toBottomOf="@id/btn_nombre_busca_cocktail"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"  />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
