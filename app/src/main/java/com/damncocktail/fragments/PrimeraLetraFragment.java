@@ -81,6 +81,10 @@ public class PrimeraLetraFragment extends Fragment implements View.OnClickListen
     }
 
     private void cargarRV(List<Cocktail> cocktail) {
+        if (cocktail == null) {
+            Toast.makeText(getActivity(), R.string.no_ingredient, Toast.LENGTH_SHORT).show();
+            return;
+        }
         linearLayoutManager = new LinearLayoutManager(getActivity());
         nombreCocktailAdapter = new NombreCocktailAdapter((ArrayList<Cocktail>) cocktail, getActivity());
         nombreCocktailAdapter.setOnCocktailClickListener(this);

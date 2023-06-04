@@ -25,8 +25,6 @@ import com.damncocktail.util.RetrofitClient;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.time.Instant;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,12 +49,6 @@ public class AleatorioFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (isNetworkAvailable()) {
-            consultarCocktail();
-        } else {
-            Toast.makeText(getActivity(), R.string.no_internet, Toast.LENGTH_LONG).show();
-        }
     }
 
     private void consultarCocktail() {
@@ -186,6 +178,12 @@ public class AleatorioFragment extends Fragment {
         medidasIngredientesCocktail2 = rootView.findViewById(R.id.medidasIngredientesCocktail2);
         medidasIngredientesCocktail3 = rootView.findViewById(R.id.medidasIngredientesCocktail3);
         instruccionesCocktail = rootView.findViewById(R.id.instruccionesCocktail);
+        if (isNetworkAvailable()) {
+            consultarCocktail();
+        } else {
+            Toast.makeText(getActivity(), R.string.no_internet, Toast.LENGTH_LONG).show();
+        }
+
         return rootView;
     }
 

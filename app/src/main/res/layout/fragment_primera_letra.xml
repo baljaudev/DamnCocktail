@@ -18,8 +18,9 @@
             android:layout_height="wrap_content"
             android:hint="@string/et_primera_letra_cocktail"
             android:layout_marginTop="@dimen/margen_app"
+            android:maxLines="1"
             android:maxLength="1"
-            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:inputType="text"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

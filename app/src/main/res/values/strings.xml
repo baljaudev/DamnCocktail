@@ -43,4 +43,6 @@
     <string name="et_ingrediente_cocktail">Enter an ingredient</string>
     <string name="no_cocktail">There is no cocktails with that ingredient. Try again!</string>
     <string name="et_primera_letra_cocktail">Enter the first letter of the cocktail</string>
+    <string name="no_data">There is no cocktails for that name. Try again!</string>
+    <string name="no_ingredient">There is no cocktails for that letter. Try again!</string>
 </resources>
