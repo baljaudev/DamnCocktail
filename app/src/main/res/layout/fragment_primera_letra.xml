@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/et_primera_letra_cocktail"
             android:layout_marginTop="@dimen/margen_app"
+            android:maxLines="1"
             android:maxLength="1"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
             app:layout_constraintTop_toTopOf="parent"
