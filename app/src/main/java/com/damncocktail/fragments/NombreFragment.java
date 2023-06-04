@@ -113,7 +113,13 @@ public class NombreFragment extends Fragment implements View.OnClickListener, On
     public void onClick(View v) {
         if (v.getId() == R.id.btn_nombre_busca_cocktail) {
             String nombre = etNombreBuscarCocktail.getText().toString();
+            if (nombre.isEmpty()) {
+                Toast.makeText(getActivity(), R.string.no_data, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             datosAPI(nombre);
+
         }
     }
 
