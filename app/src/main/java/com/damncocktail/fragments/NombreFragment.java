@@ -60,7 +60,7 @@ public class NombreFragment extends Fragment implements View.OnClickListener, On
             public void onResponse(Call<DrinkList> call, Response<DrinkList> response) {
                 if (response.isSuccessful()) {
                     DrinkList cocktails = response.body();
-                    Log.d("URL", response.raw().request().url().toString());
+                    Log.d("URL:", response.raw().request().url().toString());
                     cargarRV(cocktails.getDrinks());
                 } else {
                     Log.e("ERROR", response.message());
@@ -75,13 +75,16 @@ public class NombreFragment extends Fragment implements View.OnClickListener, On
     }
 
     private void cargarRV(List<Cocktail> cocktail) {
+        if (cocktail == null) {
+            Toast.makeText(getActivity(), R.string.no_data, Toast.LENGTH_SHORT).show();
+            return;
+        }
         linearLayoutManager = new LinearLayoutManager(getActivity());
         nombreCocktailAdapter = new NombreCocktailAdapter((ArrayList<Cocktail>) cocktail, getActivity());
         nombreCocktailAdapter.setOnCocktailClickListener(this);
         rvNombreCocktails.setHasFixedSize(true);
         rvNombreCocktails.setLayoutManager(linearLayoutManager);
         rvNombreCocktails.setAdapter(nombreCocktailAdapter);
-
     }
 
     private boolean isNetworkAvailable() {
