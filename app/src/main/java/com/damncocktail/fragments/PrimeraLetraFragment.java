@@ -122,6 +122,11 @@ public class PrimeraLetraFragment extends Fragment implements View.OnClickListen
     public void onClick(View v) {
         if (v.getId() == R.id.btn_busca_cocktail) {
             String letra = etBuscarCocktail.getText().toString();
+
+            if (letra.isEmpty()) {
+                Toast.makeText(getActivity(), R.string.no_letra, Toast.LENGTH_SHORT).show();
+                return;
+            }
             datosAPI(letra);
         }
     }
