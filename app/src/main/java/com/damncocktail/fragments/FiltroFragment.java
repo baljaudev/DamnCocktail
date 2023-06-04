@@ -86,7 +86,11 @@ public class FiltroFragment extends Fragment implements View.OnClickListener, Sp
             cargarFragment(new SiNoAlcoholFragment());
         } else if (v.getId() == R.id.btnFiltro && spnFiltro.getSelectedItemPosition() == 3) {
             cargarFragment(new PrimeraLetraFragment());
+        } else if (v.getId() == R.id.btnFiltro && spnFiltro.getSelectedItemPosition() == 4) {
+            // TODO: Implementar FavoritosFragment
+            cargarFragment(new FavoritosFragment());
         }
+
 
 
     }

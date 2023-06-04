@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.bumptech.glide.Glide;
 import com.damncocktail.R;
@@ -22,9 +24,17 @@ import com.damncocktail.apidata.Cocktail;
 import com.damncocktail.apidata.DrinkList;
 import com.damncocktail.util.APIRestServicesCocktail;
 import com.damncocktail.util.RetrofitClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,6 +53,8 @@ public class CocktailFragment extends Fragment {
     LinearLayout medidasIngredientesCocktail2;
     LinearLayout medidasIngredientesCocktail3;
     TextView instruccionesCocktail;
+    ToggleButton toggleButtonFavorito;
+    private ArrayList<String> favoritos = new ArrayList<String>();
     public CocktailFragment() {}
 
 
@@ -63,12 +75,45 @@ public class CocktailFragment extends Fragment {
         medidasIngredientesCocktail1 = rootView.findViewById(R.id.medIngredientesCocktail1);
         medidasIngredientesCocktail2 = rootView.findViewById(R.id.medIngredientesCocktail2);
         medidasIngredientesCocktail3 = rootView.findViewById(R.id.medIngredientesCocktail3);
+        toggleButtonFavorito = rootView.findViewById(R.id.toggleButtonFavorito);
         instruccionesCocktail = rootView.findViewById(R.id.instCocktail);
         if (args != null && args.containsKey("nombreCocktail")) {
             String nombCocktail = args.getString("nombreCocktail");
             comprobarAPI(nombCocktail);
         }
         return rootView;
+    }
+
+
+    private void consultarEsFavorito(Cocktail cocktail) {
+
+        String sUserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+
+        FirebaseDatabase.getInstance().getReference("users").child(sUserId).child("favorites").get()
+            .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        GenericTypeIndicator<ArrayList<String>> arrayListGenericTypeIndicator = new GenericTypeIndicator<ArrayList<String>>() {};
+                        favoritos = task.getResult().getValue(arrayListGenericTypeIndicator);
+                        if (favoritos == null) {
+                            favoritos = new ArrayList<String>();
+                        }
+
+                        if (favoritos.contains(cocktail.getIdDrink())) {
+                           toggleButtonFavorito.setChecked(true);
+                        }
+                        else {
+                            toggleButtonFavorito.setChecked(false);
+                        }
+
+
+                    }
+                    else {
+                        Log.e("firebase", "Error getting data", task.getException());
+                    }
+                }
+        });
     }
 
     private void comprobarAPI(String nombre) {
@@ -92,7 +137,30 @@ public class CocktailFragment extends Fragment {
                     Log.d("URL", response.raw().request().url().toString());
                     if (drinkList != null && drinkList.getDrinks() != null) {
                         Cocktail cocktail = drinkList.getDrinks().get(0);
+                        consultarEsFavorito(cocktail);
                         cargarDatos(cocktail);
+                        toggleButtonFavorito.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                boolean isChecked = toggleButtonFavorito.isChecked();
+                                String sUserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+
+                                if (isChecked) {
+                                    // meterle como favorito
+                                    favoritos.add(cocktail.getIdDrink());
+                                }
+                                else {
+                                    // quitarle de favorito
+                                    favoritos.remove(cocktail.getIdDrink());
+                                }
+
+                                FirebaseDatabase.getInstance()
+                                        .getReference("users")
+                                        .child(sUserId)
+                                        .child("favorites")
+                                        .setValue(favoritos);
+                            }
+                        });
                     }
                 } else {
                     Log.e("ERROR", response.message());

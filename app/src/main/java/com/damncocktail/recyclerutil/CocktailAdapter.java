@@ -77,4 +77,9 @@ public class CocktailAdapter extends RecyclerView.Adapter<CocktailAdapter.Cockta
         this.cocktailClickListener = listener;
     }
 
+    public void addCocktail(Cocktail cocktail) {
+        cocktailList.add(cocktail);
+        notifyItemInserted(cocktailList.size() - 1);
+    }
+
 }

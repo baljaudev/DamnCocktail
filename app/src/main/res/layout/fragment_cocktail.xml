@@ -12,6 +12,15 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/margen_app">
 
+        <ToggleButton
+            android:id="@+id/toggleButtonFavorito"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Marcar como favorito"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
         <!-- Nombre del cóctel -->
         <TextView
             android:id="@+id/nomCocktail"
@@ -22,7 +31,7 @@
             android:fontFamily="casual"
             android:textAlignment="center"
             android:layout_marginTop="@dimen/margen_app"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toggleButtonFavorito"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -144,6 +153,8 @@
             app:layout_constraintTop_toBottomOf="@id/medIngredientesCocktail3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

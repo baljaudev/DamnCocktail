@@ -18,6 +18,12 @@ public interface APIRestServicesCocktail {
             @Query("s") String nombre);
 
 
+    @GET("v1/{key}/lookup.php")
+    Call<DrinkList> obtenerCocktailPorId(
+            @Path("key") String key,
+            @Query("i") String id);
+
+
     @GET("v1/{key}/filter.php")
     Call<DrinkList> obtenerCocktailIngrediente(
             @Path("key") String key,

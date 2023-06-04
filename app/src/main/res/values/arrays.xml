@@ -6,6 +6,7 @@
         <item>INGREDIENT</item>
         <item>ALCOHOLIC YES/NO</item>
         <item>FIRST LETTER</item>
+        <item>FAVORITE</item>
     </string-array>
 
 </resources>
