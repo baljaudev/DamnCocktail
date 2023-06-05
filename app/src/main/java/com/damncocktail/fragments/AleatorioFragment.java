@@ -21,6 +21,11 @@ import com.damncocktail.apidata.Cocktail;
 import com.damncocktail.apidata.DrinkList;
 import com.damncocktail.util.APIRestServicesCocktail;
 import com.damncocktail.util.RetrofitClient;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +39,7 @@ import retrofit2.Retrofit;
 public class AleatorioFragment extends Fragment {
 
     public static final String CLAVE_KEY = "1";
+    private AdView adView;
     TextView nombreCocktail;
     ImageView fotoCocktail;
     LinearLayout parejasIngredientes1;
@@ -178,6 +184,11 @@ public class AleatorioFragment extends Fragment {
         medidasIngredientesCocktail2 = rootView.findViewById(R.id.medidasIngredientesCocktail2);
         medidasIngredientesCocktail3 = rootView.findViewById(R.id.medidasIngredientesCocktail3);
         instruccionesCocktail = rootView.findViewById(R.id.instruccionesCocktail);
+        adView = rootView.findViewById(R.id.adView);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
         if (isNetworkAvailable()) {
             consultarCocktail();
         } else {
@@ -185,6 +196,30 @@ public class AleatorioFragment extends Fragment {
         }
 
         return rootView;
+    }
+
+    @Override
+    public void onPause() {
+        if (adView != null) {
+            adView.pause();
+        }
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (adView != null) {
+            adView.resume();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        if (adView != null) {
+            adView.destroy();
+        }
+        super.onDestroy();
     }
 
     private boolean isNetworkAvailable() {

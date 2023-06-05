@@ -7,7 +7,6 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 
 import com.damncocktail.fragments.AleatorioFragment;
 import com.damncocktail.fragments.FiltroFragment;

@@ -145,5 +145,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margen_app"
+            app:layout_constraintTop_toBottomOf="@id/instruccionesCocktail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            ads:adSize="LARGE_BANNER"
+            ads:adUnitId="ca-app-pub-6209459664558185/6448808255">
+        </com.google.android.gms.ads.AdView>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
