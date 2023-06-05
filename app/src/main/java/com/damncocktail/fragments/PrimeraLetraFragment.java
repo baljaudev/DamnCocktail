@@ -37,7 +37,7 @@ import retrofit2.Retrofit;
 public class PrimeraLetraFragment extends Fragment implements View.OnClickListener, OnCocktailClickListener {
 
     public static final String CLAVE_KEY = "1";
-
+    String letra;
     LinearLayoutManager linearLayoutManager;
 
     RecyclerView rvCocktails;
@@ -113,15 +113,21 @@ public class PrimeraLetraFragment extends Fragment implements View.OnClickListen
         rvCocktails.setLayoutManager(new LinearLayoutManager(getActivity()));
         etBuscarCocktail = rootView.findViewById(R.id.et_busca_cocktail);
         btnBuscarCocktail = rootView.findViewById(R.id.btn_busca_cocktail);
-
         btnBuscarCocktail.setOnClickListener(this);
+
+        if (etBuscarCocktail != null) {
+            datosAPI(letra);
+        } else {
+            Toast.makeText(getActivity(), R.string.no_letra, Toast.LENGTH_SHORT).show();
+        }
+
         return rootView;
     }
 
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btn_busca_cocktail) {
-            String letra = etBuscarCocktail.getText().toString();
+            letra = etBuscarCocktail.getText().toString();
 
             if (letra.isEmpty()) {
                 Toast.makeText(getActivity(), R.string.no_letra, Toast.LENGTH_SHORT).show();

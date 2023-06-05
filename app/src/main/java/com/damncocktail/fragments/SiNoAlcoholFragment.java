@@ -103,6 +103,13 @@ public class SiNoAlcoholFragment extends Fragment implements View.OnClickListene
         rvCocktails.setLayoutManager(new LinearLayoutManager(getActivity()));
         btnFiltrar = vista.findViewById(R.id.btnFiltrar);
         btnFiltrar.setOnClickListener(this);
+
+        if (isNetworkAvailable()) {
+            consultarCocktail();
+        } else {
+            Toast.makeText(getActivity(), R.string.no_internet, Toast.LENGTH_LONG).show();
+        }
+
         return vista;
     }
 

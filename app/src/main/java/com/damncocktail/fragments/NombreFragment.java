@@ -35,7 +35,7 @@ import retrofit2.Retrofit;
 
 public class NombreFragment extends Fragment implements View.OnClickListener, OnCocktailClickListener {
     public static final String CLAVE_KEY = "1";
-
+    String nombre;
     LinearLayoutManager linearLayoutManager;
     RecyclerView rvNombreCocktails;
     NombreCocktailAdapter nombreCocktailAdapter;
@@ -104,15 +104,19 @@ public class NombreFragment extends Fragment implements View.OnClickListener, On
         rvNombreCocktails.setLayoutManager(new LinearLayoutManager(getActivity()));
         etNombreBuscarCocktail = rootView.findViewById(R.id.et_nombre_busca_cocktail);
         btnNombreBuscarCocktail = rootView.findViewById(R.id.btn_nombre_busca_cocktail);
-
         btnNombreBuscarCocktail.setOnClickListener(this);
+
+        if (etNombreBuscarCocktail != null) {
+            datosAPI(nombre);
+        }
+
         return rootView;
     }
 
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btn_nombre_busca_cocktail) {
-            String nombre = etNombreBuscarCocktail.getText().toString();
+            nombre = etNombreBuscarCocktail.getText().toString();
             if (nombre.isEmpty()) {
                 Toast.makeText(getActivity(), R.string.no_data, Toast.LENGTH_SHORT).show();
                 return;
