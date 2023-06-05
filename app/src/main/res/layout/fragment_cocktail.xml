@@ -16,10 +16,13 @@
             android:id="@+id/toggleButtonFavorito"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Marcar como favorito"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textOff="@string/togglebutton_no_favorite"
+            android:textOn="@string/togglebutton_favorite"
+            android:backgroundTint="@color/light_red"
+            />
 
         <!-- Nombre del cóctel -->
         <TextView

@@ -46,4 +46,6 @@
     <string name="no_data">There is no cocktails for that name. Try again!</string>
     <string name="no_ingredient">There is no cocktails for that letter. Try again!</string>
     <string name="no_letra">Introduce a letter</string>
+    <string name="togglebutton_no_favorite">NO FAVORITE</string>
+    <string name="togglebutton_favorite">FAVORITE</string>
 </resources>
