@@ -23,74 +23,122 @@
         android:contentDescription="@string/content_descr_cocktail"
         android:layout_gravity="center"/>
 
-    <!-- Ingredientes del cóctel TV -->
-    <TextView
-        android:id="@+id/ingredientesCocktailNombre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/tv_ingredientes_cocktail"
-        android:layout_marginTop="@dimen/margen_app"
-        android:textStyle="bold"
-        android:gravity="center_horizontal"/>
-
-    <!-- Lista ingredientes -->
     <LinearLayout
-        android:id="@+id/parejasIngredientesCocktail1Nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_marginTop="@dimen/margen_app">
+
+        <!-- Nombre del cóctel TV -->
+        <TextView
+            android:id="@+id/ingredientesCocktailNombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tv_ingredientes_cocktail"
+            android:textStyle="bold"
+            android:textAlignment="center" />
+
+        <!-- Medidas del cóctel TV -->
+        <TextView
+            android:id="@+id/medidasIngredientesCocktailNombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tv_medidas_ingredientes_cocktail"
+            android:textStyle="bold"
+            android:textAlignment="center" />
+    </LinearLayout>
+
+    <!-- Ingredientes y Medidas del cóctel TV -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margen_app">
+
+        <!-- Lista ingredientes -->
+        <LinearLayout
+            android:id="@+id/parejasIngredientesCocktail1Nombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:gravity="center">
+        </LinearLayout>
+
+        <!-- Lista medidas de los ingredientes -->
+        <LinearLayout
+            android:id="@+id/medidasIngredientesCocktail1Nombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:gravity="center">
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/parejasIngredientesCocktail2Nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_marginTop="@dimen/margen_app">
+
+        <!-- Lista ingredientes -->
+        <LinearLayout
+            android:id="@+id/parejasIngredientesCocktail2Nombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:gravity="center">
+        </LinearLayout>
+
+        <!-- Lista medidas de los ingredientes -->
+        <LinearLayout
+            android:id="@+id/medidasIngredientesCocktail2Nombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:gravity="center">
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/parejasIngredientesCocktail3Nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_marginTop="@dimen/margen_app">
-    </LinearLayout>
 
-    <!-- Medidas de los ingredientes del cóctel TV -->
-    <TextView
-        android:id="@+id/medidasIngredientesCocktailNombre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/tv_medidas_ingredientes_cocktail"
-        android:layout_marginTop="@dimen/margen_app"
-        android:textStyle="bold"
-        android:gravity="center_horizontal"/>
+        <!-- Lista ingredientes -->
+        <LinearLayout
+            android:id="@+id/parejasIngredientesCocktail3Nombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:gravity="center">
+        </LinearLayout>
 
-    <!-- Lista medidas de los ingredientes -->
-    <LinearLayout
-        android:id="@+id/medidasIngredientesCocktail1Nombre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/margen_app">
-    </LinearLayout>
+        <!-- Lista medidas de los ingredientes -->
+        <LinearLayout
+            android:id="@+id/medidasIngredientesCocktail3Nombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:gravity="center">
+        </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/medidasIngredientesCocktail2Nombre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/margen_app">
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/medidasIngredientesCocktail3Nombre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/margen_app">
     </LinearLayout>
 
     <!-- Preparación del cóctel TV -->
