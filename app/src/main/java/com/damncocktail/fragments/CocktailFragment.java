@@ -1,6 +1,7 @@
 package com.damncocktail.fragments;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -230,6 +231,8 @@ public class CocktailFragment extends Fragment {
                 ));
                 textView.setText(ingrediente);
                 textViewsIngredientes.add(textView);
+                textView.setTextColor(getResources().getColor(R.color.light_red));
+                textView.setPaintFlags(textView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
             }
         }
 

@@ -1,5 +1,7 @@
 package com.damncocktail.recyclerutil;
 
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -151,6 +153,8 @@ public class NombreCocktailAdapter  extends RecyclerView.Adapter<NombreCocktailA
                     ));
                     textView.setText(ingrediente);
                     textViewsIngredientes.add(textView);
+                    textView.setTextColor(Color.parseColor("#F45050"));
+                    textView.setPaintFlags(textView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
                 }
             }
 
