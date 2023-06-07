@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -22,6 +23,8 @@ public class FiltroFragment extends Fragment implements View.OnClickListener, Sp
     TextView tvFiltro2;
     Spinner spnFiltro;
     Button btnFiltro;
+
+    ImageView imageViewFiltro;
 
     FragmentManager fm;
     FragmentTransaction ft;
@@ -42,36 +45,37 @@ public class FiltroFragment extends Fragment implements View.OnClickListener, Sp
         spnFiltro = vista.findViewById(R.id.spnFiltro);
         btnFiltro = vista.findViewById(R.id.btnFiltro);
 
+        imageViewFiltro = vista.findViewById(R.id.imageViewFiltro);
+
         cargarTextoSpinnerSeleccionado();
 
         btnFiltro.setOnClickListener(this);
         spnFiltro.setOnItemSelectedListener(this);
 
-        if (spnFiltro.getSelectedItemPosition() == 0) {
-
-            cargarFotoNombre() ;
-        } else if (spnFiltro.getSelectedItemPosition() == 1) {
-            cargarFotoIngrediente();
-        } else if (spnFiltro.getSelectedItemPosition() == 2) {
-            cargarFotoSiNoAlcoholico();
-        } else if (spnFiltro.getSelectedItemPosition() == 3) {
-            cargarFotoPrimeraLetra();
-        }
+        establecerFotoFiltro();
 
         return vista;
     }
 
+    // TODO: Hacer que al seleccionar el filtro se muestre una foto en relación a la selección.
     private void cargarFotoPrimeraLetra() {
-
-    }
-
-    private void cargarFotoSiNoAlcoholico() {
+        imageViewFiltro.setImageDrawable(getResources().getDrawable(R.drawable.cocktail_firstleter));
     }
 
     private void cargarFotoIngrediente() {
+        imageViewFiltro.setImageDrawable(getResources().getDrawable(R.drawable.cocktail_ingredients));
+    }
+
+    private void cargarFotoSiNoAlcoholico() {
+        imageViewFiltro.setImageDrawable(getResources().getDrawable(R.drawable.cocktail_alcoholic));
     }
 
     private void cargarFotoNombre() {
+        imageViewFiltro.setImageDrawable(getResources().getDrawable(R.drawable.cocktail_name));
+    }
+
+    private void cargarFotoFavoritos() {
+        imageViewFiltro.setImageDrawable(getResources().getDrawable(R.drawable.cocktail_favorite));
     }
 
     @Override
@@ -87,12 +91,8 @@ public class FiltroFragment extends Fragment implements View.OnClickListener, Sp
         } else if (v.getId() == R.id.btnFiltro && spnFiltro.getSelectedItemPosition() == 3) {
             cargarFragment(new PrimeraLetraFragment());
         } else if (v.getId() == R.id.btnFiltro && spnFiltro.getSelectedItemPosition() == 4) {
-            // TODO: Implementar FavoritosFragment
             cargarFragment(new FavoritosFragment());
         }
-
-
-
     }
 
     private void cargarFragment(Fragment fragment) {
@@ -110,10 +110,24 @@ public class FiltroFragment extends Fragment implements View.OnClickListener, Sp
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String textoSeleccionado = parent.getItemAtPosition(position).toString();
         tvFiltro2.setText(textoSeleccionado);
+
+        establecerFotoFiltro();
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> parent) {
+    public void onNothingSelected(AdapterView<?> parent) {}
 
+    private void establecerFotoFiltro() {
+        if (spnFiltro.getSelectedItemPosition() == 0) {
+            cargarFotoNombre() ;
+        } else if (spnFiltro.getSelectedItemPosition() == 1) {
+            cargarFotoIngrediente();
+        } else if (spnFiltro.getSelectedItemPosition() == 2) {
+            cargarFotoSiNoAlcoholico();
+        } else if (spnFiltro.getSelectedItemPosition() == 3) {
+            cargarFotoPrimeraLetra();
+        } else if (spnFiltro.getSelectedItemPosition() == 4) {
+            cargarFotoFavoritos();
+        }
     }
 }

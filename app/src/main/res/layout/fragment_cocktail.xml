@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/crash_white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.CocktailFragment">
 
@@ -19,9 +18,11 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:fontFamily="monospace"
             android:textOff="@string/togglebutton_no_favorite"
             android:textOn="@string/togglebutton_favorite"
-            android:backgroundTint="@color/light_red"
+            android:background="@drawable/change_toggle_button"
+            android:padding="@dimen/toggle_padding"
             />
 
         <!-- Nombre del cóctel -->
@@ -50,7 +51,6 @@
             app:layout_constraintHorizontal_bias="0.5"
             android:contentDescription="@string/content_descr_cocktail"/>
 
-
         <!-- Titulo ingredientes y medidas -->
         <LinearLayout
             android:id="@+id/bloqueTitulosIngredientesMedidasCocktail"
@@ -63,7 +63,6 @@
             app:layout_constraintEnd_toEndOf="parent">
 
             <!-- TextView ingredientes -->
-
             <TextView
                 android:id="@+id/tvIngredientesCocktail"
                 android:layout_width="0dp"
@@ -199,6 +198,3 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
-
-
-

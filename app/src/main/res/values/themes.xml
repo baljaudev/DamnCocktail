@@ -4,6 +4,7 @@
         <!-- Customize your light theme here. -->
         <item name="colorSecondary">@color/light_white</item>
         <item name="colorPrimary">@color/light_red</item>
+        <item background="background_beige" name="android:colorBackground">@color/crash_white</item>
     </style>
 
     <style name="Theme.DamnCocktail" parent="Base.Theme.DamnCocktail" />

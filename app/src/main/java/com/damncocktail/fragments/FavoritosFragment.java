@@ -43,7 +43,6 @@ public class FavoritosFragment extends Fragment implements OnCocktailClickListen
     CocktailAdapter cocktailAdapter;
     RecyclerView rvCocktails;
 
-
     public FavoritosFragment() { }
 
     @Override
@@ -114,8 +113,7 @@ public class FavoritosFragment extends Fragment implements OnCocktailClickListen
                             for (String favIdDrink : favoritos) {
                                 consultarCocktail(favIdDrink);
                             }
-                        }
-                        else {
+                        } else {
                             Log.e("firebase", "Error getting data", task.getException());
                         }
                     }

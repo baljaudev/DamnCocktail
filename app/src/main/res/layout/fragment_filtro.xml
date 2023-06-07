@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -34,7 +35,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/llCartelera"
         android:layout_marginTop="@dimen/margen_app"
-        android:textAlignment="center"/>
+        android:padding="@dimen/title_filter_size"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:fontFamily="monospace"
+        android:textSize="20sp"
+        android:background="@color/light_red"
+        />
 
     <Button
         android:id="@+id/btnFiltro"
@@ -44,5 +51,12 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/margen_app"/>
+
+    <ImageView
+        android:id="@+id/imageViewFiltro"
+        android:layout_width="@dimen/filter_select_iv"
+        android:layout_height="@dimen/filter_select_iv"
+        android:layout_centerInParent="true"
+        android:src="@drawable/cocktail_name" />
 
 </RelativeLayout>
