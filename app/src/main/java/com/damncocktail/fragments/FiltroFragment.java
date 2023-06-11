@@ -17,13 +17,11 @@ import android.widget.TextView;
 
 import com.damncocktail.R;
 
-
 public class FiltroFragment extends Fragment implements View.OnClickListener, Spinner.OnItemSelectedListener {
 
     TextView tvFiltro2;
     Spinner spnFiltro;
     Button btnFiltro;
-
     ImageView imageViewFiltro;
 
     FragmentManager fm;
@@ -57,25 +55,24 @@ public class FiltroFragment extends Fragment implements View.OnClickListener, Sp
         return vista;
     }
 
-    // TODO: Hacer que al seleccionar el filtro se muestre una foto en relación a la selección.
     private void cargarFotoPrimeraLetra() {
-        imageViewFiltro.setImageDrawable(getResources().getDrawable(R.drawable.cocktail_firstleter));
+        imageViewFiltro.setImageDrawable(getResources().getDrawable(R.drawable.cocktail1_first_letter));
     }
 
     private void cargarFotoIngrediente() {
-        imageViewFiltro.setImageDrawable(getResources().getDrawable(R.drawable.cocktail_ingredients));
+        imageViewFiltro.setImageDrawable(getResources().getDrawable(R.drawable.cocktail1_ingredients));
     }
 
     private void cargarFotoSiNoAlcoholico() {
-        imageViewFiltro.setImageDrawable(getResources().getDrawable(R.drawable.cocktail_alcoholic));
+        imageViewFiltro.setImageDrawable(getResources().getDrawable(R.drawable.cocktail1_alcoholic));
     }
 
     private void cargarFotoNombre() {
-        imageViewFiltro.setImageDrawable(getResources().getDrawable(R.drawable.cocktail_name));
+        imageViewFiltro.setImageDrawable(getResources().getDrawable(R.drawable.cocktail1_name));
     }
 
     private void cargarFotoFavoritos() {
-        imageViewFiltro.setImageDrawable(getResources().getDrawable(R.drawable.cocktail_favorite));
+        imageViewFiltro.setImageDrawable(getResources().getDrawable(R.drawable.cocktail1_favorites));
     }
 
     @Override

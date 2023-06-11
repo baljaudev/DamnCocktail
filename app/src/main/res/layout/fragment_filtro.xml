@@ -18,14 +18,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/tvFiltro"
-            android:layout_weight="2"/>
+            android:layout_weight="2"
+            />
 
         <Spinner
             android:id="@+id/spnFiltro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:entries="@array/filtro" />
+            android:entries="@array/filtro"
+            />
 
     </LinearLayout>
 
@@ -43,6 +45,14 @@
         android:background="@color/light_red"
         />
 
+    <ImageView
+        android:id="@+id/imageViewFiltro"
+        android:layout_width="@dimen/filter_select_width_iv"
+        android:layout_height="@dimen/filter_select_height_iv"
+        android:layout_centerInParent="true"
+        android:src="@drawable/cocktail1_name"
+        />
+
     <Button
         android:id="@+id/btnFiltro"
         android:layout_width="wrap_content"
@@ -50,13 +60,7 @@
         android:text="@string/btnFiltrar"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/margen_app"/>
-
-    <ImageView
-        android:id="@+id/imageViewFiltro"
-        android:layout_width="@dimen/filter_select_iv"
-        android:layout_height="@dimen/filter_select_iv"
-        android:layout_centerInParent="true"
-        android:src="@drawable/cocktail_name" />
+        android:layout_marginBottom="@dimen/margen_app"
+        />
 
 </RelativeLayout>
