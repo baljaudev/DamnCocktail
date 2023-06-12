@@ -13,6 +13,7 @@
     <!-- Altura de los botones, creada para que se vea bien el icono. -->
     <dimen name="altura_button">40dp</dimen>
     <dimen name="toggle_padding">15dp</dimen>
-    <dimen name="filter_select_iv">400dp</dimen>
+    <dimen name="filter_select_height_iv">496dp</dimen>
+    <dimen name="filter_select_width_iv">375dp</dimen>
     <dimen name="title_filter_size">5dp</dimen>
 </resources>
