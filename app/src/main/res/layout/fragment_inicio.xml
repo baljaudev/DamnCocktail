@@ -21,6 +21,6 @@
         android:layout_width="wrap_content"
         android:layout_height="130dp"
         android:layout_gravity="bottom"
-        app:srcCompat="@drawable/piepagina" />
+        app:srcCompat="@drawable/pie_pagina_texto" />
 
 </FrameLayout>
