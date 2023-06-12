@@ -4,20 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".fragments.InicioFragment"
-    android:padding="@dimen/margen_app">
+    tools:context=".fragments.InicioFragment">
 
     <ImageView
         android:layout_width="wrap_content"
+        android:layout_height="240dp"
+        app:srcCompat="@drawable/portada" />
+
+    <ImageView
+        android:layout_width="232dp"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/cocktailmain"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/cocktailmainorange" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/frase_inicio"
         android:layout_gravity="center_horizontal|bottom"
-        android:padding="@dimen/margen_app" />
+        android:padding="@dimen/margen_app"
+        android:textAlignment="center"
+        android:textSize="@dimen/tv_size"
+        android:textStyle="bold"
+        android:fontFamily="serif"/>
 
 </FrameLayout>
